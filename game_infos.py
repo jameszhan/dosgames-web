@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+
 import inspect
 import json
 import os
@@ -12,5 +15,3 @@ game_infos_with_cover = list()
 for identifier, game_info in game_infos['games'].items():
     if 'coverFilename' in game_info.keys():
         game_infos_with_cover.append(game_info)
-
-game_infos['games_host'] = "https://dl.zizhizhan.com:8443"

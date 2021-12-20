@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+
+import os
 from flask import Flask
 from flask import render_template, redirect, url_for, request
 
@@ -34,7 +38,7 @@ def search():
 @app.route('/games/<identifier>/')
 def game(identifier):
     game_info = game_infos["games"][identifier]
-    return render_template('game.html', game_info=game_info, games_host=game_infos['games_host'])
+    return render_template('game.html', game_info=game_info, env=os.environ)
 
 @app.route('/games/<identifier>/logo/emularity_color_small.png')
 def emularity_logo(identifier):

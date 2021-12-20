@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 
-
 {% block title %}{{ game_info["name"]["zh-Hans"] }}{% endblock %}
 {% block main %}
     <div class="container mt-3">
@@ -73,7 +72,7 @@
                 DosBoxLoader.fileSystemKey("{{ game_info["identifier"] }}"),
                 DosBoxLoader.mountZip("c",
                     DosBoxLoader.fetchFile("Game File",
-                        "{{ url_for('static', filename="games/bin/{}.zip".format(game_info["identifier"])) }}"),
+                        "{{ "{}/dosgames/{}.zip".format(games_host, game_info["identifier"]) }}"),
                     {% if game_info["cdrom"] %}"cdrom"{% elif game_info["floppy"] %}"floppy"{% else %}"hdd"{% endif %}
                 ),
                 DosBoxLoader.startExe("{{ game_info["executable"] }}")

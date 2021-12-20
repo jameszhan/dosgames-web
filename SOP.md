@@ -5,6 +5,7 @@
 ```bash
 $ git rm --cached static/games
 $ git submodule deinit --all
-$ git rm -f static/games
+$ git rm -fr static/games
 $ rm .gitmodules
 ```
+

@@ -7,7 +7,7 @@
                 <div class="card grid-item mb-3 mr-3">
                     <a href="{{ url_for('game', identifier=game_info.identifier) }}">
                         <img class="card-img-top"
-                             src="{{ url_for('static', filename='games/img/{}/{}'.format(game_info.identifier, game_info.coverFilename)) }}"
+                             src="{{ 'https://gallery.zizhizhan.com:8443/games/{}/{}'.format(game_info.identifier, game_info.coverFilename) }}"
                              alt="{{ game_info['name']['zh-Hans'] }}">
                     </a>
                     <div class="card-body">

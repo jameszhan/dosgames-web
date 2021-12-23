@@ -1,0 +1,6 @@
+README.md
+Dockerfile
+
+__pycache__/
+
+*.zip

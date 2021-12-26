@@ -20,3 +20,14 @@ $ open http://localhost:8080
 $ docker tag dosgames-web:0.0.1 jameszhan/dosgames-web:0.0.1-aarch64
 $ docker push jameszhan/dosgames-web:0.0.1-aarch64
 ```
+
+> 以下执行操作基于`AMD Ryzen 9 5900HX`芯片的`Ubuntu 20.04.3 LTS`。
+
+```bash
+$ docker build -t dosgames-web:0.0.1 --file docker/Dockerfile .
+$ docker run --rm -it --entrypoint bash dosgames-web:0.0.1
+$ docker run --rm -p 9090:8080 -e GAME_LOAD_PATH=https://dl.zizhizhan.com/games --name dosgames dosgames-web:0.0.1
+
+$ docker tag dosgames-web:0.0.1 jameszhan/dosgames-web:0.0.1
+$ docker push jameszhan/dosgames-web:0.0.1
+```

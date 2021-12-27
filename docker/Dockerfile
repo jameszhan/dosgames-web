@@ -1,10 +1,16 @@
 FROM python:3-bullseye
 
-MAINTAINER James Zhan <zhiqiangzhan@gmail.com>
+LABEL maintainer="James Zhan <zhiqiangzhan@gmail.com>"
+
+RUN adduser --ingroup users --shell /bin/bash --gecos 'User for managing of deployment' --home /app --uid 1000 --disabled-password --quiet deploy
+
+USER deploy
 
 WORKDIR /app
 
-RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade pip
+ENV PATH /app/.local/bin:$PATH
+
+RUN /usr/local/bin/python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade pip
 
 ADD docker/requirements.txt /app
 ADD docker/app.ini /app
@@ -17,6 +23,6 @@ ADD app.py /app
 ADD game_infos.py /app
 ADD games.json /app
 
-RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
+RUN /usr/local/bin/python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
 
 CMD ["uwsgi", "app.ini"]
